@@ -1,0 +1,13 @@
+.photo {
+    width: 120px;
+}
+.block__photo {
+    display: flex;
+    flex-direction: column;
+    width: 120px;
+}
+.item {
+    display: grid;
+    grid-template-columns: 2fr 5fr 2fr;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,23 @@
+.item a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+
+}
+
+.item a.active {
+    color: #fff;
+}
+
+.item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+    align-items: center;
+}
+
+.item img {
+    width: 50px;
+    border-radius: 50%;
+}

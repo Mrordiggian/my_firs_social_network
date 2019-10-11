@@ -1,0 +1,7 @@
+.nav {
+    grid-area: nav;
+    padding: 30px;
+  }
+.sidebar {
+    margin-top: 30px;
+}

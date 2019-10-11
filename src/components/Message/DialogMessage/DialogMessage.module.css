@@ -1,0 +1,17 @@
+
+
+.message{
+    padding: 10px;
+    text-align: left;
+
+}
+.right{
+    text-align: right;
+}
+
+.message span{
+    background-color: #31394c;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: -0.2px 2px 6px 0 rgba(0, 0, 0, 0.06);
+}

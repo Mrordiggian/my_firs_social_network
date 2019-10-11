@@ -1,0 +1,11 @@
+.sidebar__item {
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar__item img {
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 10px ;
+}
