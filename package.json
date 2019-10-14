@@ -1,8 +1,10 @@
 {
+  "homepage": "https://mrordiggian.github.io/my_firs_social_network/",
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.19.0",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-redux": "^7.1.1",
@@ -32,5 +34,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.1.1"
   }
 }
