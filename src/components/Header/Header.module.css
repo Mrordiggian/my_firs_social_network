@@ -1,7 +1,13 @@
 .header{
   grid-area: header;
   background-color: #31394c;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
 }
 .header img {
   height: 100%;
+}
+.log {
+  text-align: end;
 }

@@ -1,6 +1,8 @@
 import React from 'react'
 import m from "./FindFriens.module.css";
 import photoUser from "../../assets/images/user.png";
+import {NavLink} from "react-router-dom";
+import {UserAPI} from "../../api/api";
 
 let Users = (props) => {
     let pageCount = Math.ceil(props.totalCountPage / props.countOnPage)
@@ -8,6 +10,7 @@ let Users = (props) => {
     for (let i = 1; i <= pageCount; i++) {
         pages.push(i)
     }
+
     return <div>Find Friends
         <div>{pages.map(el => {
             return <span onClick={() => {
@@ -19,14 +22,22 @@ let Users = (props) => {
         {props.state.map(u => <div key={u.id}>
 
             <div className={m.item}>
-                <div className={m.block__photo}><img src={u.photos.large == null ? photoUser : u.photos.large}
-                                                     className={m.photo}/>
+                <div className={m.block__photo}>
+                    <NavLink to={`/profile/${u.id}`}>
+                        <img src={u.photos.large || photoUser} className={m.photo}/>
+                    </NavLink>
                     {u.followed ?
                         <button onClick={() => {
-                            props.unfollow(u.id)
-                        }}>Unfollow</button> :
-                        <button onClick={() => {
-                            props.follow(u.id)
+                            UserAPI.unfollowOnUser(u.id).then(data => {
+                                if (data.resultCode === 0) props.unfollow(u.id)
+                            })
+                        }}>Unfollow</button>
+
+                        : <button onClick={() => {
+                            UserAPI.followOnUser(u.id)
+                                .then(data => {
+                                    if (data.resultCode === 0) props.follow(u.id)
+                                })
                         }}>Follow</button>
                     }
                 </div>
