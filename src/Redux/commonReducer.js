@@ -1,16 +1,16 @@
-const SET_AUTH_DATA = 'SET_AUTH_DATA';
+const TOGGLE_IS_PROGRESS = 'TOGGLE_IS_PROGRESS';
 
 let initialState = {
-    id: null,
-    login: null,
-    email: null,
-    isAuthData: false
-
+    inProgress: []
 }
-const authReducer = (state = initialState, action) => {
+const commonReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_AUTH_DATA: {
-            return {...state,...action.data,isAuthData: true}
+        case TOGGLE_IS_PROGRESS: {
+            return {...state,
+                inProgress: action.isProgress
+                    ? [...state.inProgress, action.userId]
+                    : state.inProgress.filter(userId => userId != action.userId)
+            }
         }
         default :
             return state
@@ -18,7 +18,7 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const setAuthData = (id, login, email) => ({type: SET_AUTH_DATA, data: {id, login, email}})
+export const toggleInProgress = (userId, isProgress) => ({type: TOGGLE_IS_PROGRESS, userId, isProgress})
 
 
-export default authReducer
+export default commonReducer

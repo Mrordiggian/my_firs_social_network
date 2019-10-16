@@ -9,6 +9,7 @@ import NavBarContainer from "./components/NavBar/NavBarContainer";
 import FindsFriendsContainer from "./components/Find Friends/FindFriendsContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import LoginPage from "./components/Login/Login";
 
 
 const App = (props) => {
@@ -23,6 +24,7 @@ const App = (props) => {
                     <Route path='/music' render={() => <Music/>}/>
                     <Route path='/findfriends' render={() => <FindsFriendsContainer/>}/>
                     <Route path='/setting' render={() => <Setting/>}/>
+                    <Route path='/login' render={() => <LoginPage/>}/>
                 </div>
 
             </div>

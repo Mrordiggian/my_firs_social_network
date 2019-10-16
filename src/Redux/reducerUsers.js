@@ -1,3 +1,6 @@
+import {UserAPI} from "../api/api";
+import {toggleInProgress} from "./commonReducer";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USER = 'SET_USER';
@@ -41,12 +44,37 @@ const reducerUser = (state = initialState, action) => {
     }
 }
 
-export const follow = (userID) => ({type: FOLLOW, userID})
-export const unfollow = (userID) => ({type: UNFOLLOW, userID})
+export const followSuccess = (userID) => ({type: FOLLOW, userID})
+export const unfollowSuccess = (userID) => ({type: UNFOLLOW, userID})
 export const setUsers = (users) => ({type: SET_USER, users})
 export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page})
 export const setTotalCount = (count) => ({type: SET_TOTAL_COUNT, count})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
+
+export const getUsers = (page,countOnPage) => (dispatch) => {
+    dispatch(toggleIsFetching(true))
+    dispatch(setCurrentPage(page))
+    UserAPI.getUsers(page, countOnPage)
+        .then(data => {
+            return dispatch(setUsers(data.items)),
+                dispatch(toggleIsFetching(false)),
+                dispatch(setTotalCount(data.totalCount))
+        })
+}
+export const follow = (userId) => (dispatch) => {
+    dispatch(toggleInProgress(userId, true))
+    UserAPI.followOnUser(userId).then(data => {
+        if (data.resultCode === 0) dispatch(followSuccess(userId))
+        dispatch(toggleInProgress(userId, false))})
+
+}
+export const unfollow = (userId) => (dispatch) => {
+    dispatch(toggleInProgress(userId, true))
+    UserAPI.unfollowOnUser(userId).then(data => {
+        if (data.resultCode === 0) dispatch(unfollowSuccess(userId))
+        dispatch(toggleInProgress(userId, false))})
+
+}
 
 
 export default reducerUser
