@@ -27,12 +27,6 @@ export const UserAPI = {
             .then(response => {
                 return response.data
             })
-    },
-    authUser () {
-        return instance.get(`auth/me`)
-            .then(response => {
-                return response.data
-            })
     }
 }
 export const ProfileAPI = {
