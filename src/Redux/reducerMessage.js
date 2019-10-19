@@ -1,4 +1,3 @@
-const UPDATE_TEXT_MSG = 'UPDATE-TEXT-MESSAGE';
 const SEND_MESSAGE = 'SEND-MESSAGE';
 let initialState = {
     messages: [
@@ -8,7 +7,6 @@ let initialState = {
         {id: 3, message: 'Today I play in Dota 2', send: 'send'},
         {id: 4, message: 'How much do you playing in dota 2?', send: 'receive'},
     ],
-    newtextMessage: '',
     dialogs: [
         {id: 0, name: 'Dima', ava: 'https://sun9-10.userapi.com/c638320/v638320921/504bc/A-GirlzJ1VA.jpg'},
         {id: 1, name: 'Pasha', ava: 'https://sun9-1.userapi.com/c855416/v855416468/cb450/6knywvCs0Us.jpg?ava=1'},
@@ -20,15 +18,11 @@ let initialState = {
 
 const reducerMessage = (state = initialState, action) =>{
     switch (action.type) {
-        case UPDATE_TEXT_MSG:
-            return  {
-                ...state,
-                newtextMessage : action.newtext
-            }
         case SEND_MESSAGE:
             let newMessage = {id: 5,
-                message: state.newtextMessage,
+                message: action.message,
                 send: 'send'}
+
             return  {
                 ...state,
                 messages : [...state.messages, newMessage],
@@ -38,7 +32,6 @@ const reducerMessage = (state = initialState, action) =>{
     }
 }
 
-export const sendMessageCreateAction = () => ({type: SEND_MESSAGE})
-export const onChangeCreateAction = (text) => ({type: UPDATE_TEXT_MSG, newtext: text})
+export const sendMessage = (message) => ({type: SEND_MESSAGE, message})
 
 export default reducerMessage

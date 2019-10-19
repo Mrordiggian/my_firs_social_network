@@ -5,6 +5,7 @@ import Users from "./Users";
 import Preloader from "../../common/Preloader/Preloader";
 import {toggleInProgress} from "../../Redux/commonReducer";
 import {withAuthRedirect} from "../../HOC/withAuthRedirect";
+import {compose} from "redux";
 
 class FindsFriendsContainer extends React.Component {
     componentDidMount() {
@@ -33,4 +34,6 @@ let mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps,{follow, unfollow, toggleInProgress, getUsers})(withAuthRedirect(FindsFriendsContainer))
+export default compose(connect(mapStateToProps,{follow, unfollow, toggleInProgress, getUsers}),
+    withAuthRedirect)(FindsFriendsContainer)
+

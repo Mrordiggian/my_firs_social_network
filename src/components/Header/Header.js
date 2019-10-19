@@ -7,7 +7,12 @@ const Header = (props) => {
         <header className={m.header}>
             <img src='https://static-s.aa-cdn.net/img/ios/1447600759/a3eb54155fccad3e3b91d8a0da36513e?v=1' alt=''/>
             <div className={m.log}>
-                {props.state.isAuthData ? props.state.login : <NavLink to={'/login'}>Login</NavLink>}
+                {props.state.isAuthData
+                    ? <div>{props.state.login} <button onClick={props.Logout} >Logout</button></div>
+                    : <NavLink to={'/login'}>Login</NavLink>
+                        
+                 }
+
 
             </div>
         </header>)

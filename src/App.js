@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
-import {Route} from "react-router-dom";
+import {Route, withRouter} from "react-router-dom";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Setting from "./components/Setting/Setting";
@@ -10,16 +10,25 @@ import FindsFriendsContainer from "./components/Find Friends/FindFriendsContaine
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/Login";
+import {connect} from "react-redux";
+import {initializeApp} from './Redux/appReducer'
+import Preloader from "./common/Preloader/Preloader";
 
 
-const App = (props) => {
-    return (
+class App extends Component {
+    componentDidMount() {
+        this.props.initializeApp()
+    }
+
+    render() {
+        if(!this.props.initialized) return <Preloader/>
+        return (
             <div className="App-wrapper">
                 <HeaderContainer/>
-                <NavBarContainer />
+                <NavBarContainer/>
                 <div>
-                    <Route path='/profile/:userID?' render={() => <ProfileContainer />}/>
-                    <Route path='/message' render={() => <MessageContainer  />}/>
+                    <Route path='/profile/:userID?' render={() => <ProfileContainer/>}/>
+                    <Route path='/message' render={() => <MessageContainer/>}/>
                     <Route path='/news' render={() => <News/>}/>
                     <Route path='/music' render={() => <Music/>}/>
                     <Route path='/findfriends' render={() => <FindsFriendsContainer/>}/>
@@ -28,8 +37,13 @@ const App = (props) => {
                 </div>
 
             </div>
-    );
+        );
+    }
 }
 
+let mapStateToProps = (state) => ({
+    initialized: state.app.initialized
+})
 
-export default App;
+
+export default withRouter( connect(mapStateToProps, {initializeApp}) (App));

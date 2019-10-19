@@ -6,7 +6,8 @@ import {connect} from "react-redux";
 
 let mapStateToProps = (state) =>{
     return {
-        state: state.Sidebar
+        state: state.Sidebar,
+        id: state.auth.id
     }
 }
 const NavBarContainer = connect(mapStateToProps)(NavBar)

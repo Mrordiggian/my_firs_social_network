@@ -7,7 +7,7 @@ const NavBar = (props) => {
 
 
     return <nav className={m.nav}>
-        <Navitem path='/profile' content='Profile'/>
+        <Navitem path={`/profile/${props.id}`} content='Profile'/>
         <Navitem path='/message' content='Message'/>
         <Navitem path='/news' content='News'/>
         <Navitem path='/music' content='Music'/>

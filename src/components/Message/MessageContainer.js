@@ -1,9 +1,10 @@
 import React from 'react';
 import m from './Message.module.css'
-import {onChangeCreateAction, sendMessageCreateAction} from "../../Redux/reducerMessage";
+import {sendMessage} from "../../Redux/reducerMessage";
 import Message from "./Message";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../HOC/withAuthRedirect";
+import {compose} from "redux";
 
 let mapStateToProps = (state) =>{
     return {
@@ -11,13 +12,10 @@ let mapStateToProps = (state) =>{
         newtextMessage: state.MessagePage.newtextMessage
     }
 }
-let mapDispatchToProps = (dispatch) =>{
-    return {
-        UpdateMessageText: (text) =>{
-            dispatch(onChangeCreateAction(text))},
-        sendMessage: () =>{
-            dispatch(sendMessageCreateAction())}
-    }
-}
-const MessageContainer = connect(mapStateToProps, mapDispatchToProps)( withAuthRedirect(Message))
+
+const MessageContainer = compose(
+    connect(mapStateToProps, {sendMessage}),
+    withAuthRedirect
+)(Message)
+
 export default MessageContainer

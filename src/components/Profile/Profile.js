@@ -1,23 +1,16 @@
 import React from 'react';
 import m from './Profile.module.css'
 import MyPostContainer from "./MyPost/MypostContainer";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import Preloader from "../../common/Preloader/Preloader";
 
 
 
 
 let Profile  = (props) => {
-    if(!props.state) return <Preloader/>
+    if(!props.state) return  <Preloader/>
     return <div>
-        <div className={m.wapper}>
-        </div>
-        <div className={m.info}>
-            <img src={props.state.photos.large} alt=""/>
-            <div>
-                <h3>{props.state.fullName}</h3>
-                <span>{props.state.aboutMe}</span>
-            </div>
-        </div>
+        <ProfileInfo {...props}/>
         <MyPostContainer/>
     </div>
 }
