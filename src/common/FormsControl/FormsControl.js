@@ -17,35 +17,13 @@ export const Textarea = ({input, meta, ...props}) => {
     let eror = meta.touched && meta.error
     let newprops = {input, meta, ...props}
     return <FormControl {...newprops}>
-        <textarea {...input} {...props} className={eror && style.erorblock || ''} cols="30" rows="5"></textarea>
+        <textarea {...input} {...props} className={eror && style.erorblock || ''} cols="30" rows="5"/>
     </FormControl>
 }
 export const Input = ({input, meta, ...props}) => {
     let eror = meta.touched && meta.error
     let newprops = {input, meta, ...props}
     return <FormControl {...newprops}>
-        <input {...input} {...props} className={eror && style.erorblock || ''} ></input>
+        <input {...input} {...props} className={eror && style.erorblock || ''} />
     </FormControl>
 }
-/*
-export const Textarea = ({input, meta, ...props}) => {
-    let eror = meta.touched && meta.error
-    let restprops = {...props}
-    return <div>
-        <textarea {...input} {...restprops} className={eror && style.erorblock || ''} cols="30" rows="5"></textarea>
-        <div className={style.eror}>
-            {eror && <span>{meta.error}</span>}
-        </div>
-    </div>
-}
-
-export const Input = ({input, meta, ...props}) => {
-    let eror = meta.touched && meta.error
-    let restprops = {...props}
-    return <div>
-        <input {...input} {...restprops} className={eror && style.erorblock || ''} ></input>
-        <div className={style.eror}>
-            {eror && <span>{meta.error}</span>}
-        </div>
-    </div>
-}*/

@@ -1,3 +1,5 @@
+import {createSelector} from "reselect";
+
 export const getUsers = (state) => {
     return state.FindFriends.users
 }
@@ -16,3 +18,7 @@ export const getIsFetching = (state) => {
 export const getInProgress = (state) => {
     return state.common.inProgress
 }
+
+export const getUserSuper = createSelector(getUsers, (users) => {
+    return users.filter(u => true)
+})

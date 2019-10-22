@@ -11,9 +11,3 @@
     grid-template-columns: 2fr 5fr 2fr;
     margin-bottom: 10px;
 }
-.activePage {
-    font-weight: bold;
-}
-.page {
-    cursor: pointer;
-}
