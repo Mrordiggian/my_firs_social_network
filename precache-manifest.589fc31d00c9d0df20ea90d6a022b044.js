@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e064bc66b19e301989e3307b4c924e15",
+    "revision": "12fd7876485ae27ea6ba31138865e369",
     "url": "/my_firs_social_network/index.html"
   },
   {
@@ -8,44 +8,44 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/my_firs_social_network/static/css/3.37917727.chunk.css"
   },
   {
-    "revision": "da3b4f88792a2977eea4",
+    "revision": "21ed0bde876256b4d2bd",
     "url": "/my_firs_social_network/static/css/4.5ff56c32.chunk.css"
   },
   {
-    "revision": "935fb02b69a4802918ca",
+    "revision": "14d6372b1bd85edce5c6",
     "url": "/my_firs_social_network/static/css/6.1cce00e5.chunk.css"
   },
   {
-    "revision": "db0322dca92c48fcd70e",
+    "revision": "7aff63941c03e271d07c",
     "url": "/my_firs_social_network/static/css/main.9974b110.chunk.css"
   },
   {
-    "revision": "e39f24041f920d6e94d5",
-    "url": "/my_firs_social_network/static/js/2.bc81e651.chunk.js"
+    "revision": "1036e18504a6614fbf3c",
+    "url": "/my_firs_social_network/static/js/2.1ae04817.chunk.js"
   },
   {
     "revision": "a72b12cc07dc33ee1c11",
     "url": "/my_firs_social_network/static/js/3.bae533da.chunk.js"
   },
   {
-    "revision": "da3b4f88792a2977eea4",
-    "url": "/my_firs_social_network/static/js/4.fdeed2f0.chunk.js"
+    "revision": "21ed0bde876256b4d2bd",
+    "url": "/my_firs_social_network/static/js/4.209ba002.chunk.js"
   },
   {
     "revision": "66af8813526d67978dab",
     "url": "/my_firs_social_network/static/js/5.9a6d0650.chunk.js"
   },
   {
-    "revision": "935fb02b69a4802918ca",
-    "url": "/my_firs_social_network/static/js/6.75b4d82a.chunk.js"
+    "revision": "14d6372b1bd85edce5c6",
+    "url": "/my_firs_social_network/static/js/6.f5f3456b.chunk.js"
   },
   {
-    "revision": "db0322dca92c48fcd70e",
-    "url": "/my_firs_social_network/static/js/main.7261a49b.chunk.js"
+    "revision": "7aff63941c03e271d07c",
+    "url": "/my_firs_social_network/static/js/main.02fd18cb.chunk.js"
   },
   {
-    "revision": "317c742fe1b796e1abd8",
-    "url": "/my_firs_social_network/static/js/runtime-main.e88bde73.js"
+    "revision": "6fdfff579374f48ad507",
+    "url": "/my_firs_social_network/static/js/runtime-main.4a4b8869.js"
   },
   {
     "revision": "fc9cb5ffc105b96e0c2bb877fddceb71",
