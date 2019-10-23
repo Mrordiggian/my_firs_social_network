@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import Profile from "./Profile";
 import {getProfile, getProfileStatus, updateProfileStatus} from "../../Redux/reducerProfile";
 import {withRouter} from "react-router-dom";
-import {withAuthRedirect} from "../../HOC/withAuthRedirect";
+import {withAuthRedirect} from "../../HOC/WithAuthRedirect";
 import {compose} from "redux";
 
 
@@ -30,7 +30,7 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        state: state.ProfilePage.profileInfo,
+        profileInfo: state.ProfilePage.profileInfo,
         id: state.auth.id,
         status: state.ProfilePage.status
     }

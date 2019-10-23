@@ -8,7 +8,7 @@ import Preloader from "../../common/Preloader/Preloader";
 
 
 let Profile  = (props) => {
-    if(!props.state) return  <Preloader/>
+    if(!props.profileInfo) return  <Preloader/>
     return <div>
         <ProfileInfo {...props}/>
         <MyPostContainer/>

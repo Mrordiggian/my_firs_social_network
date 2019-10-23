@@ -4,3 +4,9 @@
 .page {
     cursor: pointer;
 }
+.paginator {
+    text-align: center;
+}
+.pointer {
+    cursor: pointer;
+}

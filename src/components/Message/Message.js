@@ -22,7 +22,7 @@ const Message = (props) => {
                {DialogsNames}
            </div>
             <div className={m.dialogsMessage}>
-                {DialogsMessages}
+                <div>{DialogsMessages}</div>
                 <ReduxMessageForm onSubmit={onSubmit}/>
             </div>
         </div>

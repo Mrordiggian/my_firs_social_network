@@ -12,6 +12,8 @@
 .dialogsMessage{
     display: grid;
     grid-template-columns: 1fr;
+    grid-template-rows:10fr 3fr ;
     justify-content: space-between;
+
 }
 

@@ -4,7 +4,7 @@ import {follow, requestUsers, unfollow} from "../../Redux/reducerUsers";
 import Users from "./Users";
 import Preloader from "../../common/Preloader/Preloader";
 import {toggleInProgress} from "../../Redux/commonReducer";
-import {withAuthRedirect} from "../../HOC/withAuthRedirect";
+import {withAuthRedirect} from "../../HOC/WithAuthRedirect";
 import {compose} from "redux";
 import {
     getCountOnPage,

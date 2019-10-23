@@ -5,10 +5,15 @@ import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utilits/Validators/Validators";
 import {Textarea} from "../../../common/FormsControl/FormsControl";
 
-let maxLength20 = maxLengthCreator(20)
+let maxLength100 = maxLengthCreator(100)
 
 const Mypost = React.memo((props) => {
-    let PostsElements = props.state.map(p => <Post key ={p.id} message={p.message} likecounts={p.likecounts}/>)
+    let PostsElements = [...props.state.posts].reverse().map(p =>
+        <Post key ={p.id}
+              message={p.message}
+              likecounts={p.likecounts}
+              profileInfo ={props.state.profileInfo}
+        />)
     let addPost = (dataForm) => {
         props.addPost(dataForm.newPost)
     }
@@ -24,7 +29,7 @@ export default Mypost
 
 const PostForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
-        <Field  name={'newPost'} validate={[required, maxLength20]} placeholder='Enter your message...' cols="30" rows="3" component={Textarea} />
+        <Field  name={'newPost'} validate={[required, maxLength100]} placeholder='Enter your message...' cols="30" rows="3" component={Textarea} />
         <div>
             <button>Send message</button>
         </div>
