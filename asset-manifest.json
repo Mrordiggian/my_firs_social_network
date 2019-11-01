@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/my_firs_social_network/static/css/main.c9c9ceb6.chunk.css",
+    "main.css": "/my_firs_social_network/static/css/main.e118d570.chunk.css",
     "main.js": "/my_firs_social_network/static/js/main.b874c255.chunk.js",
     "main.js.map": "/my_firs_social_network/static/js/main.b874c255.chunk.js.map",
-    "runtime-main.js": "/my_firs_social_network/static/js/runtime-main.a3784dd7.js",
-    "runtime-main.js.map": "/my_firs_social_network/static/js/runtime-main.a3784dd7.js.map",
+    "runtime-main.js": "/my_firs_social_network/static/js/runtime-main.58d1bcfa.js",
+    "runtime-main.js.map": "/my_firs_social_network/static/js/runtime-main.58d1bcfa.js.map",
     "static/js/2.ab35fc5c.chunk.js": "/my_firs_social_network/static/js/2.ab35fc5c.chunk.js",
     "static/js/2.ab35fc5c.chunk.js.map": "/my_firs_social_network/static/js/2.ab35fc5c.chunk.js.map",
-    "static/css/3.316ce8a2.chunk.css": "/my_firs_social_network/static/css/3.316ce8a2.chunk.css",
+    "static/css/3.f6f7ca2e.chunk.css": "/my_firs_social_network/static/css/3.f6f7ca2e.chunk.css",
     "static/js/3.257060ed.chunk.js": "/my_firs_social_network/static/js/3.257060ed.chunk.js",
     "static/js/3.257060ed.chunk.js.map": "/my_firs_social_network/static/js/3.257060ed.chunk.js.map",
     "static/css/4.4cb1e391.chunk.css": "/my_firs_social_network/static/css/4.4cb1e391.chunk.css",
@@ -17,12 +17,12 @@
     "static/js/5.d92110ed.chunk.js": "/my_firs_social_network/static/js/5.d92110ed.chunk.js",
     "static/js/5.d92110ed.chunk.js.map": "/my_firs_social_network/static/js/5.d92110ed.chunk.js.map",
     "index.html": "/my_firs_social_network/index.html",
-    "precache-manifest.ba4e9137de22919ba156b7859784ad0e.js": "/my_firs_social_network/precache-manifest.ba4e9137de22919ba156b7859784ad0e.js",
+    "precache-manifest.27bf2125a80bbfebb3eb386d2c6180a1.js": "/my_firs_social_network/precache-manifest.27bf2125a80bbfebb3eb386d2c6180a1.js",
     "service-worker.js": "/my_firs_social_network/service-worker.js",
-    "static/css/3.316ce8a2.chunk.css.map": "/my_firs_social_network/static/css/3.316ce8a2.chunk.css.map",
+    "static/css/3.f6f7ca2e.chunk.css.map": "/my_firs_social_network/static/css/3.f6f7ca2e.chunk.css.map",
     "static/css/4.4cb1e391.chunk.css.map": "/my_firs_social_network/static/css/4.4cb1e391.chunk.css.map",
     "static/css/5.de609e1c.chunk.css.map": "/my_firs_social_network/static/css/5.de609e1c.chunk.css.map",
-    "static/css/main.c9c9ceb6.chunk.css.map": "/my_firs_social_network/static/css/main.c9c9ceb6.chunk.css.map",
+    "static/css/main.e118d570.chunk.css.map": "/my_firs_social_network/static/css/main.e118d570.chunk.css.map",
     "static/media/preloader.svg": "/my_firs_social_network/static/media/preloader.fc9cb5ff.svg",
     "static/media/user.png": "/my_firs_social_network/static/media/user.36daa457.png"
   }
