@@ -3,12 +3,15 @@ import m from './MyPost.module.css'
 import {addPost} from "../../../Redux/reducerProfile";
 import Mypost from "./Mypost";
 import {connect} from "react-redux";
+import {selectProfileFullName, selectProfilePhotoSmall, selectProfilePosts} from "../../../Redux/ProfileSelector";
 
 
 
 let mapStateToProps = (state) =>{
     return {
-        state: state.ProfilePage
+        posts: selectProfilePosts(state),
+        photo: selectProfilePhotoSmall(state),
+        fullName: selectProfileFullName(state),
     }
 }
 

@@ -3,11 +3,29 @@
   background-color: #31394c;
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(100px, auto) minmax(100px, 930px);
+  grid-template-rows: 60px;
+  position: fixed;
 }
 .header img {
   height: 100%;
 }
 .log {
   text-align: end;
+}
+.logOut {
+  padding: 0 15px;
+  cursor: pointer;
+}
+@media (min-width: 640px) {
+  .header{
+    grid-area: header;
+    background-color: #31394c;
+    display: grid;
+    align-items: center;
+    grid-template-columns: minmax(270px, auto) minmax(270px, 930px);
+    grid-template-rows: 60px;
+    position: fixed;
+  }
+
 }

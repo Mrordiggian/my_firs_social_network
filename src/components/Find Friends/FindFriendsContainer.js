@@ -23,7 +23,7 @@ class FindsFriendsContainer extends React.Component {
         this.props.requestUsers(pageNumber, this.props.countOnPage)
     }
     render() {
-        return <div>
+        return <div className={'block'}>
             {this.props.isFetching && <Preloader/>}
             <Users {...this.props} onChangedPage = {this.onChangedPage}/>
         </div>
@@ -42,6 +42,7 @@ let mapStateToProps = (state) => {
 }
 
 
-export default compose(connect(mapStateToProps,{follow, unfollow, toggleInProgress, requestUsers}),
+export default compose(
+    connect(mapStateToProps,{follow, unfollow, toggleInProgress, requestUsers}),
     withAuthRedirect)(FindsFriendsContainer)
 

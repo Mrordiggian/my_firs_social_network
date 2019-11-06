@@ -1,24 +1,25 @@
 import React from 'react';
 import m from './Post.module.css'
-import { faHeart} from "@fortawesome/free-solid-svg-icons";
+import {faHeart} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import photoUser from "../../../../assets/images/user.png";
 
-const Post = (props) => {
+const Post = ({photo, fullName, message, likeCounts}) => {
     return (
-    <div className = {m.post}>
-        <div className={m.body}>
-            <img src={props.profileInfo.photos.small || photoUser}/>
-            <div>
-                <div className = {m.name}>{props.profileInfo.fullName}</div>
-                {props.message}
+        <div className={m.post + ' block'}>
+            <div className={m.header}>
+                <img src={photo || photoUser} alt='Photo'/>
+                <div className={m.name}>{fullName}</div>
+
             </div>
-        </div>
-      <div>
-        <span><FontAwesomeIcon  icon={faHeart} size="lg"/> {props.likecounts}</span>
-      </div>
-    </div>)
-    
-  
+            <div className={m.body}>
+                {message}
+            </div>
+            <div className={m.bottom}>
+                <span><FontAwesomeIcon icon={faHeart} size="lg"/> {likeCounts}</span>
+            </div>
+        </div>)
+
+
 }
 export default Post

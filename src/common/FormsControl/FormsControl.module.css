@@ -4,3 +4,7 @@
 .erorblock {
     border: 2px solid red
 }
+.textarea {
+    box-sizing: border-box;
+    width: 100%;
+}

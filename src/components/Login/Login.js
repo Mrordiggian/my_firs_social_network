@@ -10,8 +10,8 @@ import {Redirect} from "react-router-dom";
 
 let maxLength30 = maxLengthCreator(30)
 
-const LoginForm = (props) => {
-    return <form onSubmit={props.handleSubmit}>
+const LoginForm = ({captchaUrl, handleSubmit, error}) => {
+    return <form onSubmit={handleSubmit}>
         <div>email</div>
         <Field validate={[required, maxLength30]} name='email' type="text" placeholder={'email'} component={Input}/>
         <div>Password</div>
@@ -19,9 +19,13 @@ const LoginForm = (props) => {
                component={Input}/>
         <Field name='rememberMe' type="checkbox" component={Input}/>remember me
         <div>
+            {captchaUrl && <img src={captchaUrl} alt="captcha"/>}
+            {captchaUrl && <Field validate={[required, maxLength30]} name='captcha' type="text" placeholder={'Enter symbols from the picture'} component={Input}/>}
+        </div>
+        <div>
             <button>Login</button>
         </div>
-        {props.error && <div className={style.error}>  {props.error} </div>}
+        {error && <div className={style.error}>  {error} </div>}
     </form>
 }
 
@@ -35,12 +39,13 @@ const LoginContainer = (props) => {
     if (props.isAuth) return <Redirect to={`/profile/${props.id}`}/>
     return <div>
         <h1>Login</h1>
-        <ReduxLoginForm onSubmit={onSubmit}/>
+        <ReduxLoginForm captchaUrl={props.captchaUrl} onSubmit={onSubmit}/>
     </div>
 
 }
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuthData,
-    id: state.auth.id
+    id: state.auth.id,
+    captchaUrl: state.auth.captchaUrl
 })
 export default connect(mapStateToProps, {sendLoginData})(LoginContainer)

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import m from './MyPost.module.css'
 import Post from './Post/Post';
 import {Field, reduxForm} from "redux-form";
@@ -7,31 +7,40 @@ import {Textarea} from "../../../common/FormsControl/FormsControl";
 
 let maxLength100 = maxLengthCreator(100)
 
-const Mypost = React.memo((props) => {
-    let PostsElements = [...props.state.posts].reverse().map(p =>
-        <Post key ={p.id}
+const Mypost = React.memo(({posts, photo, fullName, addPost}) => {
+    const [editMpde, setEditMode] = useState(false)
+    let PostsElements = [...posts].reverse().map(p =>
+        <Post key={p.id}
               message={p.message}
-              likecounts={p.likecounts}
-              profileInfo ={props.state.profileInfo}
+              likeCounts = {p.likecounts}
+              photo = {photo}
+              fullName = {fullName}
         />)
-    let addPost = (dataForm) => {
-        props.addPost(dataForm.newPost)
+    let addNewPost = (dataForm) => {
+        addPost(dataForm.newPost)
+        setEditMode(false)
     }
 
     return <div>
-        <div>My post</div>
-        <ReduxPostForm onSubmit={addPost}/>
+        <div className={m.postForm + ' block'}>
+            {!editMpde && <NewPost setEditMode={setEditMode}/>}
+            {editMpde && <ReduxPostForm setEditMode={setEditMode} onSubmit={addNewPost}/>}
+        </div>
         {PostsElements}
-
     </div>
 })
 export default Mypost
 
-const PostForm = (props) => {
-    return <form onSubmit={props.handleSubmit}>
-        <Field  name={'newPost'} validate={[required, maxLength100]} placeholder='Enter your message...' cols="30" rows="3" component={Textarea} />
+const NewPost = ({setEditMode}) => {
+    return <div onClick={()=>{setEditMode(true)}} className={m.newPost }>
+        <span >What`s new?</span>
+    </div>
+}
+const PostForm = ({setEditMode, handleSubmit}) => {
+    return <form onSubmit={handleSubmit} >
+        <Field autoFocus={true} name={'newPost'} validate={[required, maxLength100]} placeholder='Enter your message...'  component={Textarea}/>
         <div>
-            <button>Send message</button>
+            <button>Post</button>
         </div>
     </form>
 }

@@ -4,9 +4,23 @@
     font-size: 13px;
     font-weight: 500;
     line-height: 1.54;
-    margin-bottom: 20px;
-    display: block;
+    display: inline-block;
+
 }
 .item a.active{
     color: #fff;
+}
+.item:hover{
+    background-color: #31394c;
+}
+
+.awesome {
+    display: inline-block;
+    width: 30px;
+}
+.item {
+    display: grid;
+    padding: 10px 15px;
+    vertical-align: center;
+
 }

@@ -1,7 +1,17 @@
 .nav {
     grid-area: nav;
-    padding: 30px;
+    padding-left: 15px;
+    padding-top: 60px;
   }
 .sidebar {
     margin-top: 30px;
+}
+@media (min-width: 640px) {
+    .nav {
+        padding-left: 30px;
+        position: fixed;
+        top: 90px;
+        padding-top: 0;
+    }
+
 }

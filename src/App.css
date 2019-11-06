@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+* {
+
+  box-sizing: border-box;
+}
+
 .App-wrapper {
   margin: 0 auto;  
   display: grid;
@@ -7,21 +12,40 @@
   font-size: 13px;
   background-color: #212734;
   max-width: 1200px;
-  grid-template-areas: 
-  "header header"
-  "nav content"
-  "footer footer";
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
-  
+  grid-template-areas:
+          "header"
+          "nav"
+          "content";
 }
+
 .App-wrapper-content {
   grid-area: content;
   color: rgba(255, 255, 255, 0.6);
+
 }
 a {
   cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
 }
+.block {
+  background-color: #31394c;
+  padding: 0 20px;
+
+}
+@media (min-width: 640px) {
+  .App-wrapper {
+    grid-template-areas:
+            "header header"
+            "nav content"
+            "footer footer";
+    grid-template-rows: 60px minmax(100vh, 100%);
+    grid-template-columns: 270px minmax(100px, 930px);
+    grid-gap: 30px;
+  }
+}
+
+
 
 
 

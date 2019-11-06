@@ -17,7 +17,7 @@ export const Textarea = ({input, meta, ...props}) => {
     let eror = meta.touched && meta.error
     let newprops = {input, meta, ...props}
     return <FormControl {...newprops}>
-        <textarea {...input} {...props} className={eror && style.erorblock || ''} cols="30" rows="5"/>
+        <textarea {...input} {...props} className={eror && style.erorblock + style.textarea ||  style.textarea } />
     </FormControl>
 }
 export const Input = ({input, meta, ...props}) => {

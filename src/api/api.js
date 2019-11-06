@@ -44,6 +44,18 @@ export const ProfileAPI = {
             .then(response => {
                 return response.data
             })
+    },
+    updateProfileData (data) {
+        return instance.put(`profile`, data)
+    },
+    saveMainPhoto (photoFile) {
+        const formData = new FormData
+        formData.append('image', photoFile)
+        return instance.put(`profile/photo`, formData, {
+            headers: {
+                'Content-Type' : 'multipatr/form-data'
+            }
+        })
     }
 }
 export const AuthAPI = {
@@ -54,12 +66,18 @@ export const AuthAPI = {
                 return response.data
             })
     },
-    authLogin (email, password, rememberMe) {
+    authLogin (email, password, rememberMe, captcha = null) {
         return instance.post(`auth/login`, {
-            email, password, rememberMe
+            email, password, rememberMe, captcha
         })
     },
     Logout () {
         return instance.delete(`auth/login`)
+    }
+}
+export const SecurityAPI = {
+    getCaptcha () {
+        return instance.get(`security/get-captcha-url`)
+
     }
 }

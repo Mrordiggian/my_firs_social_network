@@ -1,12 +1,17 @@
 import React from 'react';
 import m from './Navitem.module.css'
 import {NavLink} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-const Navitem = (props) =>{
+const Navitem = ({path, content, icon}) =>{
     return(
-        <div className={m.item}>
-            <NavLink to={props.path} activeClassName={m.active}>{props.content}</NavLink>
-        </div>
+            <NavLink className={m.item} to={path} activeClassName={m.active}>
+                <div>
+                <span className={m.awesome}><FontAwesomeIcon  icon={icon} size="lg"/></span>
+                {content}
+                </div>
+            </NavLink>
+
     )
 }
 

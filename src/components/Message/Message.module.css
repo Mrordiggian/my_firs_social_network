@@ -1,19 +1,84 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 100vh;
 }
 
 .dialogsName{
-
+    background-color: #31394c;
+    min-width: 200px;
+    margin-left: 30px;
 }
-
-
 
 .dialogsMessage{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows:10fr 3fr ;
-    justify-content: space-between;
+    bottom: 30px;
+    margin-left: 230px;
+    background-color: #31394c;
+    width: 600px;
+    display: none;
+}
+.dialogsMessage_item {
+
+}
+.messageForm{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    margin-left: 230px;
+    min-width: 600px;
+}
+
+.message{
+    padding: 10px;
+    text-align: left;
+
+}
+.right{
+    text-align: right;
+}
+
+.message span{
+    background-color: #31394c;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: -0.2px 2px 6px 0 rgba(0, 0, 0, 0.06);
+}
+
+.item a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
 
 }
 
+.item a.active {
+    color: #fff;
+}
+
+.item {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    padding: 10px;
+    align-items: center;
+}
+
+
+.photo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+@media (min-width: 640px) {
+    .dialogsMessage{
+        display: block;
+    }
+    .messageForm{
+        display: block;
+    }
+    .dialogsName{
+        position: fixed;
+        margin-left: 0;
+    }
+
+}
