@@ -14,16 +14,16 @@ const FormControl = (props) => {
 }
 
 export const Textarea = ({input, meta, ...props}) => {
-    let eror = meta.touched && meta.error
+    let error = meta.touched && meta.error
     let newprops = {input, meta, ...props}
     return <FormControl {...newprops}>
-        <textarea {...input} {...props} className={eror && style.erorblock + style.textarea ||  style.textarea } />
+        <textarea  {...input} {...props} className={error && style.errorBlock + style.textarea ||  style.textarea } />
     </FormControl>
 }
 export const Input = ({input, meta, ...props}) => {
-    let eror = meta.touched && meta.error
+    let error = meta.touched && meta.error
     let newprops = {input, meta, ...props}
     return <FormControl {...newprops}>
-        <input {...input} {...props} className={eror && style.erorblock || ''} />
+        <input {...input} {...props} className={error && style.errorBlock || ' ' + style.input } />
     </FormControl>
 }

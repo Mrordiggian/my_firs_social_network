@@ -1,10 +1,17 @@
-.eror {
+.error {
     color: red;
 }
-.erorblock {
+.errorBlock {
     border: 2px solid red
 }
 .textarea {
-    box-sizing: border-box;
+    border-radius: 0.2rem;
+    padding: 0.2rem;
     width: 100%;
+}
+.input {
+    border-radius: 0.2rem;
+   padding: 0.2rem;
+    outline: none;
+
 }

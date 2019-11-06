@@ -77,20 +77,20 @@ const ProfileDataForm = reduxForm({form: 'profileData'})(({profileInfo, handleSu
             <FontAwesomeIcon className={m.pointer} onClick={() => setEditMode(false)} icon={faTimes} size="lg"/>
         </div>
         {error && <div className={style.error}>  {error} </div>}
-        <Field validate={[]} name='fullName' type="text" placeholder={'Full name'} component={Input}/>
+        <Field validate={[]} name='fullName' type="text"  component={Input}/>
         <div><b>About me: </b></div>
-        <Field validate={[]} name='aboutMe' type="text" placeholder={'About me'} component={Textarea}/>
+        <Field validate={[]} name='aboutMe' type="text"  component={Textarea}/>
         <div><b>Looking for a job: </b></div>
-        <label><Field name='lookingForAJob' type="radio" value='true' component={'input'} checked/>Yes</label>
-        <label><Field name='lookingForAJob' type="radio" value='false' component={'input'}/>No</label>
+        <label><Field name='lookingForAJob' type="radio" value={true} component={'input'} checked/>Yes</label>
+        <label><Field name='lookingForAJob' type="radio" value={false} component={'input'}/>No</label>
         <div><b>Description a job: </b></div>
-        <Field validate={[]} name='lookingForAJobDescription' type="text" placeholder={'Description a job'}
+        <Field validate={[]} name='lookingForAJobDescription' type="text"
                component={Textarea}/>
 
         <div><b>Contacts: </b>
             {Object.keys(profileInfo.contacts).map(key => {
                 return <div>{key}
-                    <Field validate={[]} name={'contacts.' + key} type="text" placeholder={key} component={Input}/>
+                    <Field validate={[]} name={'contacts.' + key} type="text"  component={Input}/>
                 </div>
             })}
         </div>
