@@ -5,26 +5,27 @@ import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utilits/Validators/Validators";
 import {Textarea} from "../../../common/FormsControl/FormsControl";
 
-let maxLength100 = maxLengthCreator(100)
 
-const Mypost = React.memo(({posts, photo, fullName, addPost}) => {
-    const [editMpde, setEditMode] = useState(false)
+
+const Mypost = React.memo(({posts, photo, fullName, addPost, deletePost}) => {
+    const [editMode, setEditMode] = useState(false)
     let PostsElements = [...posts].reverse().map(p =>
         <Post key={p.id}
+              id={p.id}
               message={p.message}
               likeCounts = {p.likecounts}
               photo = {photo}
               fullName = {fullName}
+              deletePost = {deletePost}
         />)
     let addNewPost = (dataForm) => {
         addPost(dataForm.newPost)
         setEditMode(false)
     }
-
     return <div>
         <div className={m.postForm + ' block'}>
-            {!editMpde && <NewPost setEditMode={setEditMode}/>}
-            {editMpde && <ReduxPostForm setEditMode={setEditMode} onSubmit={addNewPost}/>}
+            {!editMode && <NewPost setEditMode={setEditMode}/>}
+            {editMode && <ReduxPostForm setEditMode={setEditMode} onSubmit={addNewPost}/>}
         </div>
         {PostsElements}
     </div>
@@ -36,13 +37,18 @@ const NewPost = ({setEditMode}) => {
         <span >What`s new?</span>
     </div>
 }
-const PostForm = ({setEditMode, handleSubmit}) => {
-    return <form onSubmit={handleSubmit} >
-        <Field autoFocus={true} name={'newPost'} validate={[required, maxLength100]} placeholder='Enter your message...'  component={Textarea}/>
-        <div>
-            <button>Post</button>
-        </div>
-    </form>
+let maxLength100 = maxLengthCreator(100)
+
+const PostForm = ({handleSubmit, setEditMode}) => {
+    return <form onSubmit={handleSubmit}>
+            <Field autoFocus={true} name={'newPost'} validate={[required, maxLength100]}
+                   placeholder='Enter your message...' component={Textarea}/>
+            <div>
+                <button>Post</button>
+                <button onClick={() => setEditMode(false)}>Cancel</button>
+            </div>
+        </form>
 }
+
 
 const ReduxPostForm = reduxForm({form: 'addNewPost'})(PostForm)

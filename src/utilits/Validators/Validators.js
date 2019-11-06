@@ -1,8 +1,8 @@
 import React from "react";
 
 
-export const maxLengthCreator = maxlendth  => (value) => {
-     if(value.length > maxlendth) return `Max length message ${maxlendth} symbols`
+export const maxLengthCreator = maxlength  => (value) => {
+     if(value && value.length > maxlength) return `Max length message ${maxlength} symbols`
     return undefined
 }
 

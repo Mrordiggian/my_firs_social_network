@@ -34,7 +34,7 @@ const reducerProfile = (state = initialState, action) => {
             }
         }
         case DELETE_POST: {
-            return {...state, posts: state.posts.filter(p => p.id != action.id)}
+            return {...state, posts: state.posts.filter(p => p.id !== action.id)}
         }
         case SET_OWNER: {
             return {...state, isOwner: action.isOwner}
@@ -65,7 +65,7 @@ export const saveMainPhotoSuccess = (photo) => ({type: SET_PHOTO, photo})
 export const getProfile = (userID) => async (dispatch, getState) => {
     let state = getState()
     dispatch(setUserProfile(null))
-    userID == state.auth.id ? dispatch(setOwner(true)): dispatch(setOwner(false))
+    Number(userID) === state.auth.id ? dispatch(setOwner(true)): dispatch(setOwner(false))
     let data = await ProfileAPI.getProfileData(userID)
     dispatch(setUserProfile(data))
 
@@ -87,7 +87,6 @@ export const updateProfileData = (data) => async (dispatch, getState) => {
     }
 }
 export const saveMainPhoto = (photo) => async (dispatch) => {
-    debugger
     let response = await ProfileAPI.saveMainPhoto(photo)
 
     if(response.data.resultCode === 0) dispatch(saveMainPhotoSuccess(response.data.data.photos))

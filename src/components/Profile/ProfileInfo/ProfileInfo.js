@@ -4,7 +4,7 @@ import photoUser from "../../../assets/images/user.png";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import {Field, reduxForm} from "redux-form";
 import {Input, Textarea} from "../../../common/FormsControl/FormsControl";
-import {faEdit, faHeart, faTimes} from "@fortawesome/free-solid-svg-icons";
+import {faEdit, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import style from "../../Login/login.module.css";
 

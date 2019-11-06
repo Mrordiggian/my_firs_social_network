@@ -1,16 +1,15 @@
 import React from 'react';
 import m from './Post.module.css'
-import {faHeart} from "@fortawesome/free-solid-svg-icons";
+import {faHeart, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import photoUser from "../../../../assets/images/user.png";
 
-const Post = ({photo, fullName, message, likeCounts}) => {
+const Post = ({photo, fullName, message, likeCounts, deletePost, id}) => {
     return (
         <div className={m.post + ' block'}>
             <div className={m.header}>
                 <img src={photo || photoUser} alt='Photo'/>
-                <div className={m.name}>{fullName}</div>
-
+                <div className={m.name}>{fullName} <button onClick={()=>deletePost(id)}><FontAwesomeIcon icon={faTimes} size="lg"/></button></div>
             </div>
             <div className={m.body}>
                 {message}
