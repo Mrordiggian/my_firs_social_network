@@ -18,13 +18,11 @@ import {
 class FindsFriendsContainer extends React.Component {
 
     populate = () => {
-        console.log('populate')
         let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
         if (!this.props.isFetching && windowRelativeBottom < document.documentElement.clientHeight + 100) {this.props.requestUsers( this.props.currentPage + 1, this.props.countOnPage)};
     }
 
     componentDidMount() {
-        console.log('didmount')
         this.props.requestUsers(this.props.currentPage, this.props.countOnPage)
         window.addEventListener('scroll', this.populate)
     }
