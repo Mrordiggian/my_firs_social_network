@@ -29,8 +29,9 @@ const reducerUser = (state = initialState, action) => {
                 users: updateObject(state.users, 'id', action.userID, {followed: false})
             }
         case SET_USER:
-            return {...state, users: action.users}
+            return {...state, users: [...state.users, ...action.users]}
         case SET_CURRENT_PAGE:
+            console.log('setcurentpage' + state.currentPage )
             return {...state, currentPage: action.page}
         case SET_TOTAL_COUNT:
             return {...state, totalCountPage: action.count}

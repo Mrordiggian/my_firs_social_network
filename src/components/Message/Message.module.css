@@ -14,7 +14,7 @@
     bottom: 30px;
     margin-left: 230px;
     background-color: #31394c;
-    width: 600px;
+    min-width: 630px;
     display: none;
 }
 .dialogsMessage_item {
@@ -25,7 +25,7 @@
     position: fixed;
     bottom: 0;
     margin-left: 230px;
-    min-width: 600px;
+    min-width: 630px;
 }
 
 .message{

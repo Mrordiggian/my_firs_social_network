@@ -9,10 +9,10 @@ const NavBar = (props) => {
 
     return <nav className={m.nav}>
         <Navitem path={`/profile/${props.id}`} content='Profile' icon={faUserCircle}/>
+        <Navitem path='/findfriends' content='Find Friends' icon={faSearch}/>
         <Navitem path='/message' content='Message' icon={faComment}/>
         <Navitem path='/news' content='News' icon={faBookmark}/>
         <Navitem path='/music' content='Music' icon={faMusic}/>
-        <Navitem path='/findfriends' content='Find Friends' icon={faSearch}/>
         <Navitem path='/setting' content='Setting' icon={faCog}/>
         <div className={m.sidebar}>
             <Sidebar state = {props.state}/>

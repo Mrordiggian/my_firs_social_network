@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {follow, requestUsers, unfollow} from "../../Redux/reducerUsers";
+import {follow, requestUsers, setCurrentPage, unfollow} from "../../Redux/reducerUsers";
 import Users from "./Users";
 import Preloader from "../../common/Preloader/Preloader";
 import {toggleInProgress} from "../../Redux/commonReducer";
@@ -16,16 +16,29 @@ import {
 } from "../../Redux/UsersSelector";
 
 class FindsFriendsContainer extends React.Component {
+
+    populate = () => {
+        console.log('populate')
+        let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
+        if (!this.props.isFetching && windowRelativeBottom < document.documentElement.clientHeight + 100) {this.props.requestUsers( this.props.currentPage + 1, this.props.countOnPage)};
+    }
+
     componentDidMount() {
+        console.log('didmount')
         this.props.requestUsers(this.props.currentPage, this.props.countOnPage)
+        window.addEventListener('scroll', this.populate)
     }
-    onChangedPage = (pageNumber) => {
-        this.props.requestUsers(pageNumber, this.props.countOnPage)
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.populate)
     }
+
+    // onChangedPage = (pageNumber) => {
+    //     this.props.requestUsers(pageNumber, this.props.countOnPage)
+    // }
     render() {
         return <div className={'block'}>
             {this.props.isFetching && <Preloader/>}
-            <Users {...this.props} onChangedPage = {this.onChangedPage}/>
+            <Users {...this.props} />
         </div>
     }
 }
@@ -43,6 +56,6 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-    connect(mapStateToProps,{follow, unfollow, toggleInProgress, requestUsers}),
+    connect(mapStateToProps,{follow, unfollow, toggleInProgress, requestUsers, setCurrentPage}),
     withAuthRedirect)(FindsFriendsContainer)
 
