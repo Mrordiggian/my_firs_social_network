@@ -1,5 +1,4 @@
 import React from 'react';
-import m from './MyPost.module.css'
 import {addPost, deletePost} from "../../../Redux/reducerProfile";
 import Mypost from "./Mypost";
 import {connect} from "react-redux";

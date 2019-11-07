@@ -9,7 +9,7 @@ const commonReducer = (state = initialState, action) => {
             return {...state,
                 inProgress: action.isProgress
                     ? [...state.inProgress, action.userId]
-                    : state.inProgress.filter(userId => userId != action.userId)
+                    : state.inProgress.filter(userId => Number(userId) !== action.userId)
             }
         }
         default :

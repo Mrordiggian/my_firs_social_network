@@ -33,8 +33,8 @@ export default Message
 
 
 const DialogMessage = (props) => {
-    if(props.send == 'receive') return <div className={m.message}><span>{props.message}</span></div>
-    if(props.send == 'send')return <div className={`${m.message} + ${m.right}`}><span>{props.message}</span></div>
+    if(props.send === 'receive') return <div className={m.message}><span>{props.message}</span></div>
+    if(props.send === 'send')return <div className={`${m.message} + ${m.right}`}><span>{props.message}</span></div>
 }
 
 const DialogItem = (props) => {

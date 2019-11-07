@@ -15,7 +15,7 @@ function ProfileContainer(props) {
             props.getProfile(props.match.params.userID || props.id)
             props.getProfileStatus(props.match.params.userID || props.id)
         },
-        [props.match.params.userID]
+        [props.match.params.userID, props.id]
     )
     return <Profile {...props}/>
 }
@@ -34,38 +34,3 @@ export default compose(
     withAuthRedirect
 )(ProfileContainer)
 
-/*
-class ProfileContainer extends React.Component {
-
-    componentDidMount() {
-        if (this.props.match.params.userID) {
-            this.props.getProfile(this.props.match.params.userID)
-            this.props.getProfileStatus(this.props.match.params.userID)
-        }
-    }
-    componentDidUpdate(prevProps, prevState) {
-        if(prevProps.match.params.userID != this.props.match.params.userID){
-            this.props.getProfile(this.props.match.params.userID)
-            this.props.getProfileStatus(this.props.match.params.userID)
-        }
-    }
-
-    render() {
-        return <Profile {...this.props}/>
-    }
-}
-
-let mapStateToProps = (state) => {
-    return {
-        profileInfo: state.ProfilePage.profileInfo,
-        id: state.auth.id,
-        status: state.ProfilePage.status,
-        isOwner: state.ProfilePage.isOwner
-    }
-}
-export default compose(
-    connect(mapStateToProps, {getProfile, getProfileStatus, updateProfileStatus, updateProfileData}),
-    withRouter,
-    withAuthRedirect
-)(ProfileContainer)
-*/

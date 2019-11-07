@@ -24,8 +24,10 @@ let ProfileInfo = ({profileInfo, isOwner, status, updateProfileStatus, updatePro
         <div className={m.ava +' block'}>
             <div className={m.photo}
                  style={{background: `url(${profileInfo.photos.large || photoUser}) 50% 50% no-repeat /cover`}}/>
-            {isOwner &&<input type='file' onChange={upfatePhoto} accept=".jpg, .jpeg, .png">
-            </input>}
+            {isOwner &&
+            <label className={style.labelFile}>
+                <input className={style.inputFile} type='file' onChange={upfatePhoto} accept=".jpg, .jpeg, .png"/>
+               Upload photo</label>}
         </div>
         <div className={m.dataInfo + ' block'}>
             <h3>{profileInfo.fullName}</h3>
@@ -52,7 +54,7 @@ export default ProfileInfo
 
 const Contact = ({title, value}) => {
     return <div className={m.about_element}>
-        <b>{title}: </b><a href={value} target="_blank">{value} </a>
+        <b>{title}: </b><a href={value} target="_blank" rel="noopener noreferrer">{value} </a>
     </div>
 }
 
@@ -71,6 +73,15 @@ const ProfileData = ({profileInfo}) => {
 }
 
 const ProfileDataForm = reduxForm({form: 'profileData'})(({profileInfo, handleSubmit, setEditMode, error}) => {
+    const normalizeBoolean = value => {
+        if (value === "true") {
+            return true;
+        }
+        if (value === "false") {
+            return false;
+        }
+        return value;
+    };
     return <form onSubmit={handleSubmit}>
         <div className={m.saveForm}>
             <button className={m.pointer}>Save</button>
@@ -81,8 +92,9 @@ const ProfileDataForm = reduxForm({form: 'profileData'})(({profileInfo, handleSu
         <div><b>About me: </b></div>
         <Field validate={[]} name='aboutMe' type="text"  component={Textarea}/>
         <div><b>Looking for a job: </b></div>
-        <label><Field name='lookingForAJob' type="radio" value={true} component={'input'} checked/>Yes</label>
-        <label><Field name='lookingForAJob' type="radio" value={false} component={'input'}/>No</label>
+
+        <label><Field name='lookingForAJob' type="radio" value={true} normalize={normalizeBoolean} component={'input'} />Yes</label>
+        <label><Field name='lookingForAJob' type="radio" value={false} normalize={normalizeBoolean} component={'input'}/>No</label>
         <div><b>Description a job: </b></div>
         <Field validate={[]} name='lookingForAJobDescription' type="text"
                component={Textarea}/>

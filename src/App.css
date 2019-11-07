@@ -1,18 +1,40 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-*, input {
+*, input, button, textarea {
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
 }
 textarea {
+  margin: 0.5rem 0;
   border-radius: 0.2rem;
   padding: 0.2rem;
   min-width: 100%;
 }
 input {
   border-radius: 0.2rem;
-  padding: 0.2rem;
+  padding: 0.4rem;
   outline: none;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  border: none
 }
+input:focus {
+  border: 1px solid  aliceblue;
+}
+label {
+  margin-right: 0.5rem;
+}
+button {
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  background: #3d465e;
+  border-radius: 0.2rem;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0.2rem 1rem;
+}
+button:hover, button:disabled{
+  background: #2d354c;
+}
+
 .App-wrapper {
   margin: 0 auto;  
   display: grid;

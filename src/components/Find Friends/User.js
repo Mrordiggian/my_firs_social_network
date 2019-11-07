@@ -9,7 +9,7 @@ const User = ({user, inProgress, unfollow, follow}) => {
     return  <div key={user.id} className={m.item}>
             <div className={m.block__photo}>
                 <NavLink to={`/profile/${user.id}`}>
-                    <img src={user.photos.large || photoUser} className={m.photo}/>
+                    <img src={user.photos.large || photoUser} className={m.photo} alt='photo'/>
                 </NavLink>
                 {user.followed ?
                     <button disabled={inProgress.some(id => id === user.id)} onClick={() => {

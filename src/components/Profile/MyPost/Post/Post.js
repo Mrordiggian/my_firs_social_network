@@ -8,7 +8,7 @@ const Post = ({photo, fullName, message, likeCounts, deletePost, id}) => {
     return (
         <div className={m.post + ' block'}>
             <div className={m.header}>
-                <img src={photo || photoUser} alt='Photo'/>
+                <img src={photo || photoUser} alt='photo'/>
                 <div className={m.name}>{fullName} <button onClick={()=>deletePost(id)}><FontAwesomeIcon icon={faTimes} size="lg"/></button></div>
             </div>
             <div className={m.body}>
