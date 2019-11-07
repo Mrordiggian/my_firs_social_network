@@ -101,7 +101,7 @@ const ProfileDataForm = reduxForm({form: 'profileData'})(({profileInfo, handleSu
 
         <div><b>Contacts: </b>
             {Object.keys(profileInfo.contacts).map(key => {
-                return <div>{key}
+                return <div key={key}>{key}
                     <Field validate={[]} name={'contacts.' + key} type="text"  component={Input}/>
                 </div>
             })}
