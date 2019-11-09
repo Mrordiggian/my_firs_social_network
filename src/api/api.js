@@ -47,6 +47,9 @@ export const ProfileAPI = {
     },
     updateProfileData (data) {
         return instance.put(`profile`, data)
+    }
+    ,getPosts (page) {
+        return axios.get(`https://jsonplaceholder.typicode.com/posts?_page=${page}`)
     },
     saveMainPhoto (photoFile) {
         const formData = new FormData()

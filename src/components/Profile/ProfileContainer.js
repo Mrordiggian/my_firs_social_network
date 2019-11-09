@@ -10,12 +10,12 @@ import {selectAuthId} from "../../Redux/AuthSelector";
 
 
 
-function ProfileContainer(props) {
+function ProfileContainer({match, id, getProfile, getProfileStatus, ...props}) {
     useEffect(() => {
-            props.getProfile(props.match.params.userID || props.id)
-            props.getProfileStatus(props.match.params.userID || props.id)
+            getProfile(match.params.userID || id)
+            getProfileStatus(match.params.userID || id)
         },
-        [props.match.params.userID, props.id]
+        [match, id, getProfile, getProfileStatus]
     )
     return <Profile {...props}/>
 }

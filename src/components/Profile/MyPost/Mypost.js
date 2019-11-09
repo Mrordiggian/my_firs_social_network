@@ -9,10 +9,10 @@ import {Textarea} from "../../../common/FormsControl/FormsControl";
 
 const Mypost = React.memo(({posts, photo, fullName, addPost, deletePost}) => {
     const [editMode, setEditMode] = useState(false)
-    let PostsElements = [...posts].reverse().map(p =>
+    let PostsElements = posts.map(p =>
         <Post key={p.id}
               id={p.id}
-              message={p.message}
+              body={p.body}
               likeCounts = {p.likecounts}
               photo = {photo}
               fullName = {fullName}

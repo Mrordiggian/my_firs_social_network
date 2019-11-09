@@ -12,6 +12,7 @@
 }
 .item:hover{
     background-color: #31394c;
+    border-radius: 0.2rem;
 }
 
 .awesome {
@@ -22,5 +23,6 @@
     display: grid;
     padding: 10px 15px;
     vertical-align: center;
+    min-width: 100%;
 
 }

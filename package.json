@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.11.2",
+    "eslint-plugin-react-hooks": "0.0.0-38dd17ab9",
     "gh-pages": "^2.1.1",
     "react-test-renderer": "^16.10.2"
   }
