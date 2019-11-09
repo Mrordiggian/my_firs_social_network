@@ -2,7 +2,7 @@ import React from 'react';
 import m from './Message.module.css'
 import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../../common/FormsControl/FormsControl";
-import {maxLengthCreator, required} from "../../utilits/Validators/Validators";
+import {maxLengthCreator} from "../../utilits/Validators/Validators";
 import photoUser from "../../assets/images/user.png";
 import {NavLink} from "react-router-dom";
 
@@ -60,7 +60,7 @@ const MessageForm = (props) => {
         <Field
             id={'messageField'}
             autoFocus={true}
-            validate={[required, maxLength100]}
+            validate={[maxLength100]}
             name={'newMessage'}
             placeholder='Enter your message...'
             cols="30"
