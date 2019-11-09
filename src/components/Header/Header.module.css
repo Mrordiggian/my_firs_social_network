@@ -19,6 +19,7 @@
 }
 @media (min-width: 640px) {
   .header{
+    z-index: 2;
     grid-area: header;
     background-color: #31394c;
     display: grid;

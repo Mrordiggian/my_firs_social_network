@@ -4,7 +4,7 @@ import User from "./User";
 
 
 let Users = ({countOnPage, currentPage, totalCountPage, ...props}) => {
-    return <div>
+    return <div className={'block'}>
         {props.state.map(u => <User user={u}
                                     key={u.id}
                                     inProgress={props.inProgress}

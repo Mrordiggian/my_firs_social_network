@@ -33,8 +33,8 @@ class FindsFriendsContainer extends React.Component {
 
     render() {
         return <div >
-            {this.props.isFetching && <Preloader/>}
             <Users  {...this.props} />
+            {this.props.isFetching && <Preloader/>}
         </div>
     }
 }

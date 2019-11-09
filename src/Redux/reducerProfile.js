@@ -101,9 +101,9 @@ export const saveMainPhoto = (photo) => async (dispatch) => {
     let response = await ProfileAPI.saveMainPhoto(photo)
     if(response.data.resultCode === 0) dispatch(saveMainPhotoSuccess(response.data.data.photos))
 }
-export const getPosts = (page) => async (dispatch) => {
-    let response = await ProfileAPI.getPosts(page)
-    dispatch(setPosts(response.data))
+export const getPosts = (page) => async (dispatch ) => {
+        let response = await ProfileAPI.getPosts(page)
+        dispatch(setPosts(response.data))
 }
 
 

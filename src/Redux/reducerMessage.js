@@ -15,7 +15,8 @@ let initialState = {
 const reducerMessage = (state = initialState, action) =>{
     switch (action.type) {
         case SEND_MESSAGE:
-            let newMessage = {id: 5,
+            let newMessage = {
+                id: Date.now(),
                 message: action.message,
                 send: 'send'}
 

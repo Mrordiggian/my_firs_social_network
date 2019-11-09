@@ -7,16 +7,17 @@ import {
     selectProfilePhotoSmall,
     selectProfilePosts
 } from "../../../Redux/ProfileSelector";
+import Preloader from "../../../common/Preloader/Preloader";
 
 
 const MyPostContainer = ({getPosts, isOwner, cleanPostState, ...props}) => {
     let [page, setPage] = useState(1);
     let [isFetching, setFetching] = useState(false);
-    useEffect( ()=>{
-       cleanPostState()
-    },[cleanPostState]);
     useEffect(() => {
+        cleanPostState()
         window.scrollTo(0, 0)
+    }, []);
+    useEffect(() => {
         let func = async () => {
             setFetching(true);
             await getPosts(page);
@@ -34,12 +35,15 @@ const MyPostContainer = ({getPosts, isOwner, cleanPostState, ...props}) => {
         window.addEventListener('scroll', populate);
         return () => window.removeEventListener('scroll', populate)
     });
-    return <Mypost {...props}/>
+    return <div>
+        <Mypost{...props}/>
+        {isFetching&& <Preloader/>}
+    </div>
 };
 
 let mapStateToProps = (state) => {
     return {
-        posts: selectProfilePosts(state),
+        posts: selectProfilePosts (state),
         photo: selectProfilePhotoSmall(state),
         fullName: selectProfileFullName(state),
         isOwner: selectProfileIsOwner(state)
