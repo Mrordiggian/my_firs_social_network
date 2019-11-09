@@ -12,21 +12,19 @@ const Message = (props) => {
     let DialogsMessages = props.state.messages.map(m => <DialogMessage key={m.id} message={m.message} send={m.send}/>)
 
     let onSubmit = (dataForm) => {
-        props.sendMessage(dataForm.newMessage)
-        dataForm.newMessage = ''
-
-        function setFocus() {
-            document.getElementById('321').focus();
+        dataForm.newMessage && props.sendMessage(dataForm.newMessage)
+        dataForm.newMessage = null
+        let setFocus = () => {
+            document.getElementById('messageField').focus();
         }
-
         setFocus()
     }
     return (
         <div className={m.dialogs}>
-            <div className={m.dialogsName}>
+            <div className={'block ' + m.dialogsName}>
                 {DialogsNames}
             </div>
-            <div className={m.dialogsMessage}>
+            <div className={'block ' + m.dialogsMessage}>
                 <div className={m.dialogsMessage_item}>{DialogsMessages}</div>
 
             </div>
@@ -55,10 +53,12 @@ const DialogItem = (props) => {
 
 let maxLength100 = maxLengthCreator(100)
 
+
+
 const MessageForm = (props) => {
-    return <form onSubmit={props.handleSubmit}>
+    return <form  onSubmit={props.handleSubmit}>
         <Field
-            id={'321'}
+            id={'messageField'}
             autoFocus={true}
             validate={[required, maxLength100]}
             name={'newMessage'}
@@ -66,8 +66,10 @@ const MessageForm = (props) => {
             cols="30"
             rows="3"
             onKeyPress={e => {
-                if (e.key === 'Enter')  props.handleSubmit()
-            }}
+                if (e.key === 'Enter'&& e.shiftKey === false) {
+                    e.preventDefault()
+                    props.handleSubmit()
+                }}}
             component={Textarea}/>
         <div>
             <button type="submit">Send</button>

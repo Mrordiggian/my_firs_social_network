@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {addPost, deletePost, getPosts, cleanPostState} from "../../../Redux/reducerProfile";
+import {addPost, deletePost, getPosts, cleanPostState, cleanNewPost} from "../../../Redux/reducerProfile";
 import Mypost from "./Mypost";
 import {connect} from "react-redux";
 import {
@@ -10,21 +10,29 @@ import {
 import Preloader from "../../../common/Preloader/Preloader";
 
 
-const MyPostContainer = ({getPosts, isOwner, cleanPostState, ...props}) => {
+const MyPostContainer = ({getPosts, isOwner, cleanPostState, cleanNewPost, posts, newPost, ...props}) => {
     let [page, setPage] = useState(1);
+    let [localPosts, setLocalPosts] = useState([])
     let [isFetching, setFetching] = useState(false);
     useEffect(() => {
-        cleanPostState()
         window.scrollTo(0, 0)
     }, []);
     useEffect(() => {
+        setLocalPosts( [...localPosts, ...posts])
+    }, [posts]);
+    useEffect(() => {
+        newPost && setLocalPosts([newPost, ...localPosts])
+        cleanNewPost()
+    }, [newPost, cleanNewPost]);
+    useEffect(() => {
         let func = async () => {
             setFetching(true);
-            await getPosts(page);
+            await getPosts(page)
             setFetching(false)
+            cleanPostState()
         };
         isOwner && func()
-    }, [page, getPosts, isOwner]);
+    }, [page, getPosts, cleanPostState, isOwner]);
     useEffect(() => {
         let populate = () => {
             let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
@@ -36,13 +44,14 @@ const MyPostContainer = ({getPosts, isOwner, cleanPostState, ...props}) => {
         return () => window.removeEventListener('scroll', populate)
     });
     return <div>
-        <Mypost{...props}/>
+        <Mypost localPosts={localPosts}{...props}/>
         {isFetching&& <Preloader/>}
     </div>
 };
 
 let mapStateToProps = (state) => {
     return {
+        newPost: state.ProfilePage.newPost,
         posts: selectProfilePosts (state),
         photo: selectProfilePhotoSmall(state),
         fullName: selectProfileFullName(state),
@@ -50,4 +59,4 @@ let mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, {addPost, deletePost, getPosts, cleanPostState})(MyPostContainer)
+export default connect(mapStateToProps, {addPost, deletePost, getPosts, cleanPostState, cleanNewPost})(MyPostContainer)

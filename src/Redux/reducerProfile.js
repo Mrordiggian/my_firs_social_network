@@ -4,6 +4,7 @@ import {stopSubmit} from "redux-form";
 const ADD_POST = 'profile_ADD_POST';
 const SET_POST = 'profile_SET_POST';
 const CLEAN_POST = 'profile_CLEAN_POST';
+const DELETE_NEW_POST = 'profile_DELETE_NEW_POST';
 const SET_USER_PROFILE = 'profile_SET_USER_PROFILE';
 const SET_STATUS = 'profile_SET_STATUS';
 const DELETE_POST = 'profile_DELETE_POST';
@@ -12,8 +13,8 @@ const SET_PHOTO = 'profile_SET_PHOTO';
 
 
 let initialState = {
-    posts: [
-    ],
+    posts: [],
+    newPost: null,
     profileInfo: null,
     status: null,
     isOwner: false,
@@ -28,13 +29,19 @@ const reducerProfile = (state = initialState, action) => {
             }
             return {
                 ...state,
-                posts: [newPost, ...state.posts],
+                newPost: newPost,
+            }
+        }
+        case DELETE_NEW_POST: {
+            return {
+                ...state,
+                newPost: null,
             }
         }
         case SET_POST: {
             return {
                 ...state,
-                posts: [ ...state.posts, ...action.posts],
+                posts: [ ...action.posts],
             }
         }
         case CLEAN_POST: {
@@ -67,6 +74,7 @@ const reducerProfile = (state = initialState, action) => {
 export const addPost = (message) => ({type: ADD_POST, message})
 export const setPosts = (posts) => ({type: SET_POST, posts})
 export const cleanPostState = () => ({type: CLEAN_POST})
+export const cleanNewPost = () => ({type: DELETE_NEW_POST})
 export const setUserProfile = (profileInfo) => ({type: SET_USER_PROFILE, profileInfo})
 export const setStatus = (status) => ({type: SET_STATUS, status})
 export const deletePost = (id) => ({type: DELETE_POST, id})

@@ -7,9 +7,9 @@ import {Textarea} from "../../../common/FormsControl/FormsControl";
 
 
 
-const Mypost = React.memo(({posts, photo, fullName, addPost, deletePost}) => {
+const Mypost = React.memo(({localPosts, photo, fullName, addPost, deletePost}) => {
     const [editMode, setEditMode] = useState(false)
-    let PostsElements = posts.map(p =>
+    let PostsElements = localPosts.map(p =>
         <Post key={p.id}
               id={p.id}
               body={p.body}
