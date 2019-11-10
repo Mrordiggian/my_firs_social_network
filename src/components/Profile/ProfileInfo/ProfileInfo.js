@@ -6,7 +6,7 @@ import {Field, reduxForm} from "redux-form";
 import {Input, Textarea} from "../../../common/FormsControl/FormsControl";
 import {faEdit, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import style from "../../Login/login.module.css";
+import styleModule from "../../Login/login.module.css";
 import ModalPhoto from "../../../common/Modal/ModalPhoto";
 
 
@@ -14,24 +14,25 @@ let ProfileInfo = ({profileInfo, isOwner, status, updateProfileStatus, updatePro
     const [editMode, setEditMode] = useState(false)
     const changeProfileData = (dataForm) => {
         updateProfileData(dataForm).then(
-            () => {setEditMode(false)})
+            () => {
+                setEditMode(false)
+            })
     }
     const upfatePhoto = (e) => {
-        if(e.target.files.length) {
+        if (e.target.files.length) {
             saveMainPhoto(e.target.files[0])
         }
     }
     return <div className={m.info}>
-        <div className={m.ava +' block'}>
+        <div className={m.ava + ' block'}>
             <div
                 className={m.photo}
-                 style={{background: `url(${profileInfo.photos.large || photoUser}) 50% 50% no-repeat /cover`}}>
-                {profileInfo.photos.large && <ModalPhoto  urlPhoto={profileInfo.photos.large}/>}
+                style={{background: `url(${profileInfo.photos.large || photoUser}) 50% 50% no-repeat /cover`}}>
+                {profileInfo.photos.large && <ModalPhoto urlPhoto={profileInfo.photos.large}/>}
             </div>
-            {isOwner &&
-            <label className={style.labelFile}>
-                <input className={style.inputFile} type='file' onChange={upfatePhoto} accept=".jpg, .jpeg, .png"/>
-               Upload photo</label>}
+            <label className={styleModule.labelFile}>
+                <input className={styleModule.inputFile} type='file' onChange={upfatePhoto} accept=".jpg, .jpeg, .png"/>
+                Upload photo</label>
         </div>
         <div className={m.dataInfo + ' block'}>
             <h3>{profileInfo.fullName}</h3>
@@ -44,7 +45,7 @@ let ProfileInfo = ({profileInfo, isOwner, status, updateProfileStatus, updatePro
                 setEditMode(true)
             }}><FontAwesomeIcon className={m.pointer} icon={faEdit} size="lg"/></div>}
             {!editMode && <ProfileData profileInfo={profileInfo}/>}
-            {editMode &&  <ProfileDataForm
+            {editMode && <ProfileDataForm
                 setEditMode={setEditMode}
                 initialValues={profileInfo}
                 onSubmit={changeProfileData}
@@ -65,9 +66,11 @@ const Contact = ({title, value}) => {
 const ProfileData = ({profileInfo}) => {
     return <div className={m.about}>
         <div className={m.about_element}><b>About me: </b><span>{profileInfo.aboutMe}</span></div>
-        <div className={m.about_element}><b>Looking for a job: </b><span>{profileInfo.lookingForAJob ? "yes" : "no"}</span></div>
+        <div className={m.about_element}><b>Looking for a
+            job: </b><span>{profileInfo.lookingForAJob ? "yes" : "no"}</span></div>
         {profileInfo.lookingForAJob &&
-        <div className={m.about_element}><b>Description a job: </b><span>{profileInfo.lookingForAJobDescription}</span></div>}
+        <div className={m.about_element}><b>Description a job: </b><span>{profileInfo.lookingForAJobDescription}</span>
+        </div>}
         <div>
             {Object.keys(profileInfo.contacts).map(key => {
                 return profileInfo.contacts[key] && <Contact key={key} title={key} value={profileInfo.contacts[key]}/>
@@ -91,14 +94,15 @@ const ProfileDataForm = reduxForm({form: 'profileData'})(({profileInfo, handleSu
             <button className={m.pointer}>Save</button>
             <FontAwesomeIcon className={m.pointer} onClick={() => setEditMode(false)} icon={faTimes} size="lg"/>
         </div>
-        {error && <div className={style.error}>  {error} </div>}
-        <Field validate={[]} name='fullName' type="text"  component={Input}/>
+        {error && <div className={styleModule.error}>  {error} </div>}
+        <Field validate={[]} name='fullName' type="text" component={Input}/>
         <div><b>About me: </b></div>
-        <Field validate={[]} name='aboutMe' type="text"  component={Textarea}/>
+        <Field validate={[]} name='aboutMe' type="text" component={Textarea}/>
         <div><b>Looking for a job: </b></div>
 
-        <label><Field name='lookingForAJob' type="radio" value={true} normalize={normalizeBoolean} component={'input'} />Yes</label>
-        <label><Field name='lookingForAJob' type="radio" value={false} normalize={normalizeBoolean} component={'input'}/>No</label>
+        <label><Field name='lookingForAJob' type="radio" value={true} normalize={normalizeBoolean} component={'input'}/>Yes</label>
+        <label><Field name='lookingForAJob' type="radio" value={false} normalize={normalizeBoolean}
+                      component={'input'}/>No</label>
         <div><b>Description a job: </b></div>
         <Field validate={[]} name='lookingForAJobDescription' type="text"
                component={Textarea}/>
@@ -106,7 +110,7 @@ const ProfileDataForm = reduxForm({form: 'profileData'})(({profileInfo, handleSu
         <div><b>Contacts: </b>
             {Object.keys(profileInfo.contacts).map(key => {
                 return <div key={key}>{key}
-                    <Field validate={[]} name={'contacts.' + key} type="text"  component={Input}/>
+                    <Field validate={[]} name={'contacts.' + key} type="text" component={Input}/>
                 </div>
             })}
         </div>

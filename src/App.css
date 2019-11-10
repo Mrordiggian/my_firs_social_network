@@ -2,6 +2,7 @@
 *, input, button, textarea {
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
+  transition: all ease .2s
 }
 *:focus{
   outline: none;

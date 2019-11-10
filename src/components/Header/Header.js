@@ -11,15 +11,12 @@ const Header = ({Logout, state}) => {
             <div className={m.log}>
                 {state.isAuthData
                     ? <div>{state.login}
-                    <span className={m.logOut} onClick={Logout} >
+                        <span className={m.logOut} onClick={Logout}>
                         <FontAwesomeIcon icon={faSignOutAlt} size="lg"/>
                     </span>
-                </div>
+                    </div>
                     : <NavLink className={m.logOut} to={'/login'}>Login</NavLink>
-                        
-                 }
-
-
+                }
             </div>
         </header>)
 }
