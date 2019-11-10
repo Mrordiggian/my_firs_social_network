@@ -26,7 +26,7 @@ let ProfileInfo = ({profileInfo, isOwner, status, updateProfileStatus, updatePro
             <div
                 className={m.photo}
                  style={{background: `url(${profileInfo.photos.large || photoUser}) 50% 50% no-repeat /cover`}}>
-                <ModalPhoto  urlPhoto={profileInfo.photos.large}/>
+                {profileInfo.photos.large && <ModalPhoto  urlPhoto={profileInfo.photos.large}/>}
             </div>
             {isOwner &&
             <label className={style.labelFile}>
