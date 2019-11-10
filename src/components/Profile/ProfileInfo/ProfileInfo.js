@@ -7,6 +7,7 @@ import {Input, Textarea} from "../../../common/FormsControl/FormsControl";
 import {faEdit, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import style from "../../Login/login.module.css";
+import ModalPhoto from "../../../common/Modal/ModalPhoto";
 
 
 let ProfileInfo = ({profileInfo, isOwner, status, updateProfileStatus, updateProfileData, saveMainPhoto}) => {
@@ -22,8 +23,11 @@ let ProfileInfo = ({profileInfo, isOwner, status, updateProfileStatus, updatePro
     }
     return <div className={m.info}>
         <div className={m.ava +' block'}>
-            <div className={m.photo}
-                 style={{background: `url(${profileInfo.photos.large || photoUser}) 50% 50% no-repeat /cover`}}/>
+            <div
+                className={m.photo}
+                 style={{background: `url(${profileInfo.photos.large || photoUser}) 50% 50% no-repeat /cover`}}>
+                <ModalPhoto  urlPhoto={profileInfo.photos.large}/>
+            </div>
             {isOwner &&
             <label className={style.labelFile}>
                 <input className={style.inputFile} type='file' onChange={upfatePhoto} accept=".jpg, .jpeg, .png"/>
